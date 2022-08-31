@@ -65,6 +65,9 @@ function App() {
         <p style={{fontSize: 12, color: 'black'}}>{output}</p>
       </div>
       </header>
+    
+
+      <h4>Check us out on <a href="https://www.github.com/DeForestt/aflat">Github</a></h4>
     </div>
   );
 }
