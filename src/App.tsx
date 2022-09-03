@@ -3,8 +3,8 @@ import './App.css';
 import CodeEditor from '@uiw/react-textarea-code-editor';
 
 const runBox = async (code: string) => {
-  const scheme = "http";
-  const host = "3.93.191.171";
+  const scheme = process.env.DEV_MODE ? "http" : "https";
+  const host = process.env.DEV_MODE ? "localhost:8000" : "api.aflatlang.com";
   const baseUrl = `${scheme}://${host}`;
   const endpoint = "/box/run";
   const url = `${baseUrl}${endpoint}`;
