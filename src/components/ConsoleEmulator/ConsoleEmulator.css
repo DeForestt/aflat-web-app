@@ -1,0 +1,20 @@
+
+div.console-emulator {
+  background-color: #000;
+  padding: 10px;
+  white-space: pre-wrap;
+  min-width: 20rem;
+  min-height: 10rem;
+  text-align: left;
+}
+
+p.console-text {
+  margin: 0;
+  color: #fff;
+  font-size: small;
+}
+
+p::before {
+    content:'$ ';
+    color: #0c0;
+}

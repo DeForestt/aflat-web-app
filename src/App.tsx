@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import CodeEditor from '@uiw/react-textarea-code-editor';
+import ConsoleEmulator from "./components/ConsoleEmulator/ConsoleEmulator";
 
 const runBox = async (code: string) => {
   const scheme = process.env.DEV_MODE ? "http" : "https";
@@ -59,11 +60,7 @@ function App() {
           }}
       />
       <button onClick={() => run()}>Run</button>
-      <div style={{
-        backgroundColor: "#f5f5f5",
-      }}>
-        <p style={{fontSize: 12, color: 'black'}}>{output}</p>
-      </div>
+      <ConsoleEmulator text={output} />
       </header>
     
 
