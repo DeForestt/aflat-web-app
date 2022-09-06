@@ -4,7 +4,7 @@ import Editor from './components/Editor/Editor';
 
 function App() {
   
-  const code = `.needs <std> \n import * from "io" under io; \n\n int main(){ \n\tio.print("Hello World");\n };`;
+  const code = `.needs <std> \nimport * from "io" under io; \n\nint main(){\n\tio.print("Hello World");\n };`;
 
   return (
     <div className="App">

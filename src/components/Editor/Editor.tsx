@@ -44,17 +44,20 @@ const Editor : React.FC<EditorProps> = (props : EditorProps) => {
               fontSize: 12,
               backgroundColor: "#f5f5f5",
               fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
-              width: "20rem",
-              height: "20rem",
+              width: "50%",
+              minHeight: "50vh",
             }}
           />
         } else {
-             return <textarea value={stdin} onChange={(evn) => setStdin(evn.target.value)}></textarea>
+             return <textarea value={stdin} onChange={(evn) => setStdin(evn.target.value)} style={{
+                width: "50%",
+                height: "50vh",
+             }}></textarea>
         }
     }
 
     return (<>
-        <button onClick={switchMode}>{mode == "code" ? "stdin" : "code"}</button>
+        <button onClick={switchMode}>{mode === "code" ? "stdin" : "code"}</button>
         {textBoxes()}
         <button onClick={run}>Run</button>
         <ConsoleEmulator text={output}/>
