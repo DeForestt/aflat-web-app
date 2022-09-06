@@ -10,6 +10,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h2>Welcome to the Aflat Web App</h2>
+        {process.env.REACT_APP_DEV_MODE? <p>Development Mode</p> : <> </>}
         <Editor defaultCode={code} />
       </header>
 
