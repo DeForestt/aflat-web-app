@@ -14,7 +14,7 @@ p.console-text {
   font-size: small;
 }
 
-p.consol-text::before {
+p.console-text::before {
     content:'$ ';
     color: #0c0;
 }
