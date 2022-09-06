@@ -6,7 +6,8 @@ export interface CodeFile {
 export interface AflatProject {
     main: CodeFile;
     test?: CodeFile;
-    modules ?: [CodeFile];
+    modules?: [CodeFile];
+    stdin?: string;
 }
 
 const runBox = async (project : AflatProject) => {
