@@ -20,7 +20,8 @@ const Editor : React.FC<EditorProps> = (props : EditorProps) => {
             main: {
                 name: "main",
                 content: code,
-            }
+            },
+            stdin: stdin
         };
 
         setOutput("Running...");
@@ -48,7 +49,7 @@ const Editor : React.FC<EditorProps> = (props : EditorProps) => {
             }}
           />
         } else {
-             return <textarea onChange={(evn) => setStdin(evn.target.value)}></textarea>
+             return <textarea value={stdin} onChange={(evn) => setStdin(evn.target.value)}></textarea>
         }
     }
 
