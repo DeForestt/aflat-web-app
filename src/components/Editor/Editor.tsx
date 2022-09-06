@@ -1,4 +1,5 @@
 import React from "react";
+import {useCookies} from "react-cookie";
 import runBox from "./utils";
 import { AflatProject } from "./utils";
 import CodeEditor from '@uiw/react-textarea-code-editor';
@@ -9,10 +10,12 @@ interface EditorProps {
 }
 
 const Editor : React.FC<EditorProps> = (props : EditorProps) => {
+    const [cookies, setCookie] = useCookies(['code']);
     const [code, setCode] = React.useState(props.defaultCode)
     const [output, setOutput] = React.useState("Output will be here");
     const [mode, setMode] = React.useState("code");
     const [stdin, setStdin] = React.useState("");
+
 
     const run = () => {
 
@@ -38,7 +41,7 @@ const Editor : React.FC<EditorProps> = (props : EditorProps) => {
             value={code}
             language="js"
             placeholder="Please enter aflat code here."
-            onChange={(evn) => setCode(evn.target.value)}
+            onChange={(evn) => {setCode(evn.target.value); setCookie("code", evn.target.value);}}
             padding={15}
             style={{
               fontSize: 12,

@@ -1,10 +1,11 @@
 import React from 'react';
+import {useCookies} from 'react-cookie';
 import './App.css';
 import Editor from './components/Editor/Editor';
 
 function App() {
-  
-  const code = `.needs <std> \nimport * from "io" under io; \n\nint main(){\n\tio.print("Hello World");\n };`;
+  const [cookies, setCookie] = useCookies(['code']);
+  const code = cookies.code? cookies.code : `.needs <std> \nimport * from "io" under io; \n\nint main(){\n\tio.print("Hello World");\n};`;
 
   return (
     <div className="App">
