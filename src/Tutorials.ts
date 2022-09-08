@@ -73,7 +73,7 @@ int main() {
 };`,
         defaultCode: `.needs <std>
 // Write some code that returns a pointer to the given int argument
-export adr return7(int a) { 
+export adr returnPointer(int a) { 
     return NULL; // the NULL keyword is a pointer that points to nothing.
 };`,
         moduleName: "TestModule",
