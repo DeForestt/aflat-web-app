@@ -12,7 +12,7 @@ export interface AflatProject {
 
 const runBox = async (project : AflatProject) => {
     const scheme = process.env.REACT_APP_DEV_MODE ? "http" : "https";
-    const host = process.env.REACT_APP_DEV_MODE ? "localhost:8000" : "www.api.aflatlang.com";
+    const host = process.env.REACT_APP_DEV_MODE ? "localhost:8000" : "api.aflatlang.com";
     const baseUrl = `${scheme}://${host}`;
     const endpoint = "/box/run";
     const url = `${baseUrl}${endpoint}`;
