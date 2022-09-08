@@ -22,6 +22,9 @@ const Editor : React.FC<EditorProps> = (props : EditorProps) => {
         props.saveCode = false;
     };
 
+    React.useEffect(() => {
+        setCode(props.defaultCode);
+    }, [props.defaultCode]);
 
     const run = () => {
 
