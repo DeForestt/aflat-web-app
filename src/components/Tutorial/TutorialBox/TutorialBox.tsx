@@ -1,4 +1,5 @@
 import Editor from "../../Editor/Editor";
+import "./TutorialBox.css";
 
 interface TutorialBoxProps {
     title: string;
