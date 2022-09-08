@@ -22,6 +22,9 @@ const Editor : React.FC<EditorProps> = (props : EditorProps) => {
         props.saveCode = false;
     };
 
+    React.useEffect(() => {
+        setCode(props.defaultCode);
+    }, [props.defaultCode]);
 
     const run = () => {
 
@@ -30,6 +33,12 @@ const Editor : React.FC<EditorProps> = (props : EditorProps) => {
                 name: "main",
                 content: code,
             },
+            modules: props.moduleName? [
+                {
+                    name: props.moduleName,
+                    content: code
+                }
+            ] : undefined,
             test: props.testCode ? { name: "test", content: props.testCode } : undefined,
             stdin: stdin
         };
