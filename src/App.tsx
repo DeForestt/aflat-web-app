@@ -12,7 +12,7 @@ function App() {
       <header className="App-header">
         <h2>Welcome to the Aflat Web App</h2>
         {process.env.REACT_APP_DEV_MODE? <p>Development Mode</p> : <> </>}
-        <Editor defaultCode={code} />
+        <Editor defaultCode={code} saveCode={true} />
       </header>
 
       <h4>Check us out on <a href="https://www.github.com/DeForestt/aflat">Github</a></h4>

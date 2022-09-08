@@ -7,6 +7,9 @@ import ConsoleEmulator from "../ConsoleEmulator/ConsoleEmulator";
 
 interface EditorProps {
     defaultCode: string;
+    testCode?: string;
+    moduleName?: string;
+    saveCode?: boolean;
 }
 
 const Editor : React.FC<EditorProps> = (props : EditorProps) => {
@@ -15,6 +18,9 @@ const Editor : React.FC<EditorProps> = (props : EditorProps) => {
     const [output, setOutput] = React.useState("Output will be here");
     const [mode, setMode] = React.useState("code");
     const [stdin, setStdin] = React.useState("");
+    if (props.saveCode === undefined) {
+        props.saveCode = false;
+    };
 
 
     const run = () => {
@@ -24,6 +30,7 @@ const Editor : React.FC<EditorProps> = (props : EditorProps) => {
                 name: "main",
                 content: code,
             },
+            test: props.testCode ? { name: "test", content: props.testCode } : undefined,
             stdin: stdin
         };
 
@@ -41,7 +48,7 @@ const Editor : React.FC<EditorProps> = (props : EditorProps) => {
             value={code}
             language="js"
             placeholder="Please enter aflat code here."
-            onChange={(evn) => {setCode(evn.target.value); setCookie("code", evn.target.value);}}
+            onChange={(evn) => {setCode(evn.target.value); if (props.saveCode) setCookie("code", evn.target.value);}}
             padding={15}
             style={{
               fontSize: 12,
