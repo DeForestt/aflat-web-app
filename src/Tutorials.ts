@@ -77,5 +77,37 @@ export adr returnPointer(int a) {
     return NULL; // the NULL keyword is a pointer that points to nothing.
 };`,
         moduleName: "TestModule",
+    },
+    {
+        title: "Pointers to string literals",
+        description: "Aflat allows you to create pointers to string literals just like a `char *` in C."
+            + " Simply assign the pointer to a string literal like this: `adr a = \"Hello World\";`"
+            + " Below you can write a program that returns a pointer to the string \"Hello World\".",
+        testCode: `.needs <std>
+import * from "io" under io;
+import * from "./src/TestModule" under mod;
+import {case, report, requier} from "ATest.af" under test;
+import TestSuite from "ATest.af";
+import {str_comp} from "strings" under str;
+
+bool returnHelloWorld(adr _arg) : test.case {
+    adr x = mod.returnHelloWorld();
+    if x == NULL return false; 
+    return str.str_comp(x, "Hello World") == 1;
+};
+
+int main() {
+    TestSuite suite = new TestSuite("Pointer Test Suite");
+    suite.addCase(returnHelloWorld, "Test Returns a pointer to the string \\"Hello World\\"");
+    suite.run();
+    test.report();
+    return 0;
+};`,
+        defaultCode: `.needs <std>
+// Write some code that returns a pointer to the string "Hello World"
+export adr returnHelloWorld() {
+    return NULL;
+};`,
+        moduleName: "TestModule",
     }
 ]
