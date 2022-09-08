@@ -25,6 +25,10 @@ function App() {
           defaultCode={Tutorials[tutorial].defaultCode}
           testCode={Tutorials[tutorial].testCode}
           moduleName={Tutorials[tutorial].moduleName} />
+          <div className="next-bar">
+            <i className = "arrow left" onClick={() => {if (tutorial > 0) setTutorial(tutorial - 1)}}></i>
+            <i className = "arrow right" onClick={() => {if (tutorial < Tutorials.length - 1) setTutorial(tutorial + 1)}}></i>
+          </div>
       </div>
 
       <h4>Check us out on <a href="https://www.github.com/DeForestt/aflat">Github</a></h4>

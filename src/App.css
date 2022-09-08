@@ -28,6 +28,65 @@
   color: #61dafb;
 }
 
+/* button styles */
+button {
+  background-color: #dbd8d8;
+  border: none;
+  height: 3em;
+  width: 6em;
+  border-radius: 5px;
+  padding: 0.2em;
+  margin: 0.2em;
+}
+
+button .next {
+  background-color: #dbd8d8;
+  border: none;
+  height: 3em;
+  width: 6em;
+  border-radius: 5px;
+  padding: 0.2em;
+  margin: 0.2em;
+}
+
+button:hover {
+  background-color: #2b2727;
+}
+
+.next-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 50%;
+  /*center*/
+  margin: 0 auto;
+}
+
+.arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: .5em;
+}
+
+.arrow:hover {
+  border: solid #dac7c7;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: .5em;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
