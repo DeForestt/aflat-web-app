@@ -109,5 +109,65 @@ export adr returnHelloWorld() {
     return NULL;
 };`,
         moduleName: "TestModule",
+    },
+    {
+        title: "For loops",
+        description: "Aflat supports for loops with the syntax `for decleration; condition; increment { body }`" +
+            " Notice that there are no parentheses around the decleration, condition, and increment.  The decleration is executed before the loop starts."
+            + " The condition is checked before each iteration of the loop.  The increment is executed after each iteration of the loop."
+            + " Below you can write a program that that calls the passed in function 10 times.\n\n"
+            + " Then write a program that calls the passed in function the number of times specified by the passed in integer.",
+        testCode: `.needs <std>
+import * from "io" under io;
+import * from "./src/TestModule" under mod;
+import {case, report, requier} from "ATest.af" under test;
+import TestSuite from "ATest.af";
+
+int i = 0;
+int increment() {
+    i = i + 1;
+};
+
+bool call10Times(adr _arg) : test.case {
+    mod.call10Times(increment);
+    int t = i;
+    i = 0;
+    return t == 10;
+};
+
+bool callNTimes(adr _arg) : test.case {
+    mod.callNTimes(5, increment);
+    bool one = test.requier(i == 5, "n == 5");
+    i = 0;
+    mod.callNTimes(10, increment);
+    bool two = test.requier(i == 10, "n == 10");
+    i = 0;
+    mod.callNTimes(15, increment);
+    bool three = test.requier(i == 15, "n == 15");
+
+    return one & two & three;
+};
+
+int main() {
+    TestSuite suite = new TestSuite("For Loop Test Suite");
+    suite.addCase(call10Times, "Test Calls the passed in function 10 times");
+    suite.addCase(callNTimes, "Test Calls the passed in function the number of times specified by the passed in integer");
+    suite.run();
+    test.report();
+    return 0;
+};`,
+        defaultCode: `.needs <std>
+// Write some code that calls the passed in function 10 times
+export int call10Times(adr foo) {
+    return 0;
+};
+
+// Write some code that calls the passed in function the number of times specified by the passed in integer
+export int callNTimes(int n, adr foo) {
+    return 0;
+};`,
+
+        moduleName: "TestModule",
+
     }
 ]
