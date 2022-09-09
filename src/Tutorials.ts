@@ -77,7 +77,7 @@ int main() {
     return 0;
 };`,
         defaultCode: `.needs <std>
-// Write some code that returns a pointer to the given int argument
+// Write some code that completes the requirements above
 export int pointerFun(adr a) { 
     return 0; // your code goes here!!!
 };`,
@@ -172,6 +172,60 @@ export int callNTimes(int n, adr foo) {
     return 0;
 };`,
 
+        moduleName: "TestModule",
+
+    },
+    {
+        title: "If statements",
+        description: "Aflat supports if statements with the syntax `if condition { body } else { body }`" +
+            " Notice that there are no parentheses around the condition.\n"
+            + " Below write a function that returns the larger of the two passed in integers."
+            + " Then write a function that returns the fizzbuzz value of the passed in integer use CamelCase and return and empty string if there it would have been a plain number.",
+        testCode: `.needs <std>
+import * from "io" under io;
+import * from "strings" under str;
+import * from "./src/TestModule" under mod;
+import {case, report, requier} from "ATest.af" under test;
+
+import TestSuite from "ATest.af";
+bool returnLarger(adr _arg) : test.case {
+    return (
+        test.requier(mod.returnLarger(5, 10) == 10, "5, 10") &
+        test.requier(mod.returnLarger(10, 5) == 10, "10, 5") &
+        test.requier(mod.returnLarger(5, 5) == 5, "5, 5")
+    );
+};
+
+bool fizzBuzz(adr _arg) : test.case {
+    return (
+        test.requier(str.str_comp(mod.fizzBuzz(3), "Fizz") == 1, "3") &
+        test.requier(str.str_comp(mod.fizzBuzz(5), "Buzz") == 1, "5") &
+        test.requier(str.str_comp(mod.fizzBuzz(15), "FizzBuzz") == 1, "15") &
+        test.requier(str.str_comp(mod.fizzBuzz(2), "") == 1, "2")
+    );
+};
+
+int main() {
+    TestSuite suite = new TestSuite("Pointer Test Suite");
+    suite.addCase(returnLarger, "Test Returns the larger of the two passed in integers");
+    suite.addCase(fizzBuzz, "Test Returns the fizzbuzz value of the passed in integer");
+    suite.run();
+    test.report();
+    return 0;
+};`,
+        defaultCode: `.needs <std>
+import * from "strings" under str;
+
+// Write some code that returns the larger of the two passed in integers
+export int returnLarger(int a, int b) {
+    return 0;
+};
+
+// Write some code that returns the fizzbuzz value of the passed in integer
+export adr fizzBuzz(int n) {
+    return NULL;
+};
+`,
         moduleName: "TestModule",
 
     }
