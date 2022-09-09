@@ -50,7 +50,8 @@ export int sum(int a, int b) {
         title: "Pointers in Aflat",
         description: "Similar to C, Aflat allows you to work with pointers.  One big difference in aflat is that pointers are not typed.  They all have the same type of `adr`. This means that you can use a pointer to any type of data."
             + " variables can be refrenced by using the `?` oporator (where is <variable name>) if you have an int called `a` the int can be referensed like this."
-            + "\n\n `adr b = ?a;`\n\n  Below you can write a program that returns a pointer to an integer that was passed as an argument.",
+            + "\n\n `adr b = ?a;`\n\n To get the value that a pointer points to you can use the `as` oporator and the type that you expect `int c = a as int;`\n\n A value can be stored in a pointer by using the funnel oporator `=:` `b =: 5;`"
+            + "\n\n Below write a program that reads an integer from a pointer and then stores the number 5 in the pointer return the value of the original integer.",
         testCode: `.needs <std>
 import * from "io" under io;
 import * from "./src/TestModule" under mod;
@@ -60,8 +61,12 @@ import TestSuite from "ATest.af";
 
 bool returnPointer(adr _arg) : test.case {
     int i = 7;
-    adr x = mod.returnPointer(i);
-    return x == ?i;
+    adr x = ?i;
+    int y = mod.pointerFun(x);
+    return (
+        test.requier(y == 7, "The original value was returned") &
+        test.requier(i == 5, "The value of the pointer was changed to 5")
+    );
 };
 
 int main() {
@@ -73,8 +78,8 @@ int main() {
 };`,
         defaultCode: `.needs <std>
 // Write some code that returns a pointer to the given int argument
-export adr returnPointer(int a) { 
-    return NULL; // the NULL keyword is a pointer that points to nothing.
+export int pointerFun(adr a) { 
+    return 0; // your code goes here!!!
 };`,
         moduleName: "TestModule",
     },

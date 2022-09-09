@@ -11,10 +11,15 @@ interface TutorialBoxProps {
 }
 
 const TutorialBox = (props: TutorialBoxProps) => {
+
+    const replaceWithBr = () => {
+        return props.description.replace(/\n/g, "<br/>");
+    }
+
     return (
         <div className="tutorial-box">
             <h2>{props.title}</h2>
-            <p>{props.description}</p>
+            <p dangerouslySetInnerHTML={{__html: replaceWithBr()}}></p>
             <Editor
                 defaultCode={props.defaultCode}
                 saveCode={false} 
