@@ -4,6 +4,7 @@ import runBox from "./utils";
 import { AflatProject } from "./utils";
 import CodeEditor from '@uiw/react-textarea-code-editor';
 import ConsoleEmulator from "../ConsoleEmulator/ConsoleEmulator";
+import "./Editor.css";
 
 interface EditorProps {
     defaultCode: string;
@@ -54,6 +55,7 @@ const Editor : React.FC<EditorProps> = (props : EditorProps) => {
     const textBoxes = () => {
         if (mode === "code") {
             return <CodeEditor
+            className="code-box"
             value={code}
             language="js"
             placeholder="Please enter aflat code here."
@@ -61,17 +63,11 @@ const Editor : React.FC<EditorProps> = (props : EditorProps) => {
             padding={15}
             style={{
               fontSize: 12,
-              backgroundColor: "#f5f5f5",
-              fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
-              width: "50%",
-              minHeight: "50vh",
+              fontFamily: "ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace"
             }}
           />
         } else {
-             return <textarea value={stdin} onChange={(evn) => setStdin(evn.target.value)} style={{
-                width: "50%",
-                height: "50vh",
-             }}></textarea>
+             return <textarea className="code-box" value={stdin} onChange={(evn) => setStdin(evn.target.value)}></textarea>
         }
     }
 
