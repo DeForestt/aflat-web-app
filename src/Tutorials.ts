@@ -8,7 +8,7 @@ export default [
 import * from "io" under io;
 import * from "./src/TestModule" under mod;
 
-import {case, report, requier} from "ATest.af" under test;
+import {case, report, require} from "ATest.af" under test;
 import TestSuite from "ATest.af";
 
 bool return7(adr _arg) : test.case {
@@ -18,10 +18,10 @@ bool return7(adr _arg) : test.case {
 
 bool sum(adr _arg) : test.case {
     return (
-        test.requier(mod.sum(1, 2) == 3, "1 + 2 = 3") &
-        test.requier(mod.sum(2, 2) == 4, "2 + 2 = 4") &
-        test.requier(mod.sum(3, 2) == 5, "3 + 2 = 5") &
-        test.requier(mod.sum(4, 2) == 6, "4 + 2 = 6")
+        test.require(mod.sum(1, 2) == 3, "1 + 2 = 3") &
+        test.require(mod.sum(2, 2) == 4, "2 + 2 = 4") &
+        test.require(mod.sum(3, 2) == 5, "3 + 2 = 5") &
+        test.require(mod.sum(4, 2) == 6, "4 + 2 = 6")
     );
 };
 
@@ -56,7 +56,7 @@ export int sum(int a, int b) {
 import * from "io" under io;
 import * from "./src/TestModule" under mod;
 
-import {case, report, requier} from "ATest.af" under test;
+import {case, report, require} from "ATest.af" under test;
 import TestSuite from "ATest.af";
 
 bool returnPointer(adr _arg) : test.case {
@@ -64,8 +64,8 @@ bool returnPointer(adr _arg) : test.case {
     adr x = ?i;
     int y = mod.pointerFun(x);
     return (
-        test.requier(y == 7, "The original value was returned") &
-        test.requier(i == 5, "The value of the pointer was changed to 5")
+        test.require(y == 7, "The original value was returned") &
+        test.require(i == 5, "The value of the pointer was changed to 5")
     );
 };
 
@@ -91,7 +91,7 @@ export int pointerFun(adr a) {
         testCode: `.needs <std>
 import * from "io" under io;
 import * from "./src/TestModule" under mod;
-import {case, report, requier} from "ATest.af" under test;
+import {case, report, require} from "ATest.af" under test;
 import TestSuite from "ATest.af";
 import {str_comp} from "strings" under str;
 
@@ -125,7 +125,7 @@ export adr returnHelloWorld() {
         testCode: `.needs <std>
 import * from "io" under io;
 import * from "./src/TestModule" under mod;
-import {case, report, requier} from "ATest.af" under test;
+import {case, report, require} from "ATest.af" under test;
 import TestSuite from "ATest.af";
 
 int i = 0;
@@ -142,13 +142,13 @@ bool call10Times(adr _arg) : test.case {
 
 bool callNTimes(adr _arg) : test.case {
     mod.callNTimes(5, increment);
-    bool one = test.requier(i == 5, "n == 5");
+    bool one = test.require(i == 5, "n == 5");
     i = 0;
     mod.callNTimes(10, increment);
-    bool two = test.requier(i == 10, "n == 10");
+    bool two = test.require(i == 10, "n == 10");
     i = 0;
     mod.callNTimes(15, increment);
-    bool three = test.requier(i == 15, "n == 15");
+    bool three = test.require(i == 15, "n == 15");
 
     return one & two & three;
 };
@@ -185,23 +185,23 @@ export int callNTimes(int n, adr foo) {
 import * from "io" under io;
 import * from "strings" under str;
 import * from "./src/TestModule" under mod;
-import {case, report, requier} from "ATest.af" under test;
+import {case, report, require} from "ATest.af" under test;
 
 import TestSuite from "ATest.af";
 bool returnLarger(adr _arg) : test.case {
     return (
-        test.requier(mod.returnLarger(5, 10) == 10, "5, 10") &
-        test.requier(mod.returnLarger(10, 5) == 10, "10, 5") &
-        test.requier(mod.returnLarger(5, 5) == 5, "5, 5")
+        test.require(mod.returnLarger(5, 10) == 10, "5, 10") &
+        test.require(mod.returnLarger(10, 5) == 10, "10, 5") &
+        test.require(mod.returnLarger(5, 5) == 5, "5, 5")
     );
 };
 
 bool fizzBuzz(adr _arg) : test.case {
     return (
-        test.requier(str.str_comp(mod.fizzBuzz(3), "Fizz") == 1, "3") &
-        test.requier(str.str_comp(mod.fizzBuzz(5), "Buzz") == 1, "5") &
-        test.requier(str.str_comp(mod.fizzBuzz(15), "FizzBuzz") == 1, "15") &
-        test.requier(str.str_comp(mod.fizzBuzz(2), "") == 1, "2")
+        test.require(str.str_comp(mod.fizzBuzz(3), "Fizz") == 1, "3") &
+        test.require(str.str_comp(mod.fizzBuzz(5), "Buzz") == 1, "5") &
+        test.require(str.str_comp(mod.fizzBuzz(15), "FizzBuzz") == 1, "15") &
+        test.require(str.str_comp(mod.fizzBuzz(2), "") == 1, "2")
     );
 };
 
