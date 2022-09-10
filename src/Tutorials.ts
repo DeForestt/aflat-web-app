@@ -180,7 +180,7 @@ export int callNTimes(int n, adr foo) {
         description: "Aflat supports if statements with the syntax `if condition { body } else { body }`" +
             " Notice that there are no parentheses around the condition.\n"
             + " Below write a function that returns the larger of the two passed in integers."
-            + " Then write a function that returns the fizzbuzz value of the passed in integer use CamelCase and return and empty string if there it would have been a plain number.",
+            + " Then write a function that returns the fizzbuzz value of the passed in integer use 'CamelCase' and return and empty string if it would have been a plain number.",
         testCode: `.needs <std>
 import * from "io" under io;
 import * from "strings" under str;
