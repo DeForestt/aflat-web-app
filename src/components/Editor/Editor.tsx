@@ -19,6 +19,8 @@ const Editor : React.FC<EditorProps> = (props : EditorProps) => {
     const [output, setOutput] = React.useState("Output will be here");
     const [mode, setMode] = React.useState("code");
     const [stdin, setStdin] = React.useState("");
+    const [sharedText, setSharedText] = React.useState("");
+
     if (props.saveCode === undefined) {
         props.saveCode = false;
     };
@@ -69,14 +71,27 @@ const Editor : React.FC<EditorProps> = (props : EditorProps) => {
         } else {
              return <textarea className="code-box" value={stdin} onChange={(evn) => setStdin(evn.target.value)}></textarea>
         }
-    }
+    };
+
+    const createShareLink = () => {
+        const url = new URL(window.location.href);
+        url.searchParams.set("code", code);
+        return url.href;
+    };
+
+    const copyShareLink = () => {
+        const url = createShareLink();
+        navigator.clipboard.writeText(url);
+        setSharedText("Share Link Copied to Clipboard");
+    };
 
     return (<>
         <button onClick={switchMode}>{mode === "code" ? "stdin" : "code"}</button>
         {textBoxes()}
         <button onClick={run}>Run</button>
         <ConsoleEmulator text={output}/>
-
+        <button onClick={copyShareLink}>Share</button>
+        <label className="shadow-text">{sharedText}</label>
     </>)
 }
 

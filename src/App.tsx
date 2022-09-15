@@ -8,7 +8,8 @@ import Tutorials from './Tutorials';
 function App() {
   const [cookies, setCookie] = useCookies(['code']);
   const [tutorial, setTutorial] = React.useState(0);
-  const code = cookies.code? cookies.code : `.needs <std> \nimport * from "io" under io; \n\nint main(){\n\tio.print("Hello World");\n};`;
+  const [searchParams, setSearchParams] = React.useState(new URLSearchParams(window.location.search));
+  const code = searchParams.get('code')? searchParams.get('code') : (cookies.code? cookies.code : `.needs <std> \nimport * from "io" under io; \n\nint main(){\n\tio.print("Hello World");\n};`);
 
   return (
     <div className="App">

@@ -11,3 +11,9 @@
         width: 100%;
     }
 }
+
+.shadow-text {
+    color: darkgray;
+    font-size: 10px;
+    display: inline-block;
+}
