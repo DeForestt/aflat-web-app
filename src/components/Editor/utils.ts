@@ -3,6 +3,14 @@ export interface CodeFile {
     content: string
 }
 
+export interface Module {
+    name: string
+    description: string
+    author: string
+    version: string
+    id?: string
+};
+
 export interface AflatProject {
     main: CodeFile;
     test?: CodeFile;
@@ -34,4 +42,42 @@ const runBox = async (project : AflatProject) => {
     return res.json();
 }
 
+const uploadModule = async (module : Module, text :string) => {
+    const scheme = process.env.REACTP_APP_DEV_MODE ? "http" : "https";
+    const host = process.env.REACT_APP_DEV_MODE ? "localhost:8000" : "api.aflatlang.com";
+    const baseUrl = `${scheme}://${host}`;
+    const endpoint = "/module";
+
+    const url = `${baseUrl}${endpoint}`;
+    const body = module;
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+      },
+      body: JSON.stringify(body)
+    };
+    let res = await fetch(url, options);
+
+    let data : Module = await res.json();
+
+    const module_id : string = data.id ?? "";
+
+    const uploadEndpoint = `/module/${module_id}`;
+    const uploadUrl = `${baseUrl}${uploadEndpoint}`;
+    const uploadBody = text;
+    const uploadOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "text/plain",
+        "Accept": "application/json",
+      },
+      body: uploadBody
+    };
+    let uploadRes = await fetch(uploadUrl, uploadOptions);
+    return uploadRes.json();
+};
+
 export default runBox;
+export { uploadModule };

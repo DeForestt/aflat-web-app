@@ -1,9 +1,10 @@
 import React from "react";
 import {useCookies} from "react-cookie";
 import runBox from "./utils";
-import { AflatProject } from "./utils";
+import { AflatProject, Module, uploadModule } from "./utils";
 import CodeEditor from '@uiw/react-textarea-code-editor';
 import ConsoleEmulator from "../ConsoleEmulator/ConsoleEmulator";
+import UploadModal from "./UploadModal";
 import "./Editor.css";
 
 interface EditorProps {
@@ -20,6 +21,7 @@ const Editor : React.FC<EditorProps> = (props : EditorProps) => {
     const [mode, setMode] = React.useState("code");
     const [stdin, setStdin] = React.useState("");
     const [sharedText, setSharedText] = React.useState("");
+    const [showUploadModal, setShowUploadModal] = React.useState(false);
 
     if (props.saveCode === undefined) {
         props.saveCode = false;
@@ -92,6 +94,8 @@ const Editor : React.FC<EditorProps> = (props : EditorProps) => {
         <ConsoleEmulator text={output}/>
         <button onClick={copyShareLink}>Share</button>
         <label className="shadow-text">{sharedText}</label>
+        <button onClick={() => setShowUploadModal(!showUploadModal)}>Upload</button>
+        <UploadModal show={showUploadModal} close={() => setShowUploadModal(false)} text={code}/>
     </>)
 }
 
