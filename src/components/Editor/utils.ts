@@ -46,7 +46,7 @@ const uploadModule = async (module : Module, text :string) => {
     const scheme = process.env.REACTP_APP_DEV_MODE ? "http" : "https";
     const host = process.env.REACT_APP_DEV_MODE ? "localhost:8000" : "api.aflatlang.com";
     const baseUrl = `${scheme}://${host}`;
-    const endpoint = "/module";
+    const endpoint = "/modules";
 
     const url = `${baseUrl}${endpoint}`;
     const body = module;
@@ -60,11 +60,15 @@ const uploadModule = async (module : Module, text :string) => {
     };
     let res = await fetch(url, options);
 
+    if (res.status !== 200) {
+      return res.json();
+    }
+
     let data : Module = await res.json();
 
     const module_id : string = data.id ?? "";
 
-    const uploadEndpoint = `/module/${module_id}`;
+    const uploadEndpoint = `/modules/${module_id}`;
     const uploadUrl = `${baseUrl}${uploadEndpoint}`;
     const uploadBody = text;
     const uploadOptions = {
