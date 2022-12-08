@@ -1,6 +1,4 @@
-import { ModuleKind } from "typescript";
-
-export default [
+const lessons =  [
     {
         title: "Ints in Aflat",
         description: "Aflat allows you to work with variables like any other programing language.  The int type represents a 32-bit integer. below you can write a program that returns and integer value of 7. and then a function that returns the sum of two integers.",
@@ -141,18 +139,18 @@ bool call10Times(adr _arg) : test.case {
     mod.call10Times(increment);
     int t = i;
     i = 0;
-    return t == 10;
+    return test.require(t == 10, ${"`Expected the function to be called 10 times but got {t}`"});
 };
 
 bool callNTimes(adr _arg) : test.case {
     mod.callNTimes(5, increment);
-    bool one = test.require(i == 5, "n == 5");
+    bool one = test.require(i == 5, ${"`Expected the function to be called 5 times but got {i}`"});
     i = 0;
     mod.callNTimes(10, increment);
-    bool two = test.require(i == 10, "n == 10");
+    bool two = test.require(i == 10, ${"`Expected the function to be called 10 times but got {i}`"});
     i = 0;
     mod.callNTimes(15, increment);
-    bool three = test.require(i == 15, "n == 15");
+    bool three = test.require(i == 15, ${"`Expected the function to be called 15 times but got {i}`"});
 
     return one & two & three;
 };
@@ -235,3 +233,5 @@ export adr fizzBuzz(int n) {
 
     }
 ]
+
+export default lessons;
