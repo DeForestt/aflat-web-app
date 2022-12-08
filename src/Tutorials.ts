@@ -186,7 +186,7 @@ export int callNTimes(int n, adr foo) {
             + " A number can be passed to the break or continue statement to specify how many loops to break or continue out of.\n"
             + " Below is an example of a for loop with a `break` statement that breaks out of the loop when the counter is 5:\n\n"
             + "```javascript\nfor int i = 0; i < 10; i = i + 1 {\n\tio.printInt(i);\n\tif i == 5 {\n\t\tbreak;\n\t};\n};\n```\n\n"
-            + " Below you can write a program that that calls the passed in function 10 times and breaks out of the loop when the counter is 5.\n\n",
+            + " Below you can write a program that that calls the passed in function 10 times and breaks out of the loop when the counter is 5 if the passed in var is true.\n\n",
 
         testCode: `.needs <std>
 import * from "io" under io;
@@ -201,10 +201,14 @@ int increment() {
 };
 
 bool call10Times(adr _arg) : test.case {
-    mod.call10Times(increment);
+    mod.call10Times(increment, false);
     int t = i;
     i = 0;
-    return test.require(t == 5, ${"`Expected the function to be called 10 times but got {t}`"});
+    mod.call10Times(increment, true);
+    int t2 = i;
+    i = 0;
+    return test.require(t == 10, ${"`Expected the function to be called 10 times but got {t}`"} &
+        test.require(t2 == 5, ${"`Expected the function to be called 5 times but got {t2} (Did not break)`"}) );
 };
 
 int main() {
