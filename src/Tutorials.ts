@@ -232,7 +232,60 @@ export adr fizzBuzz(int n) {
 `,
         moduleName: "TestModule",
 
-    }
+    },
+    {
+        title: "Aflat Standard string Object",
+        description: "Aflat has a standard string object that can be imported with `import string from \"String\"`.\n" +
+        "The string object is the preferred way to work with strings in Aflat rather than using adr pointers.\n" +
+        "Below are a few methods that are available on the string object:\n" +
+        "```javascript\n" +
+        "string.len() // Returns the length of the string\n" +
+        "string.at(int index) // Returns the character at the specified index\n" +
+        "string.subString(int start, int end) // Returns a substring of the string from start to end\n" +
+        "string.push(char c) // Adds the character c to the end of the string\n" +
+        "string.upper() // Returns a new string with all the characters in upper case\n" +
+        "string.lower() // Returns a new string with all the characters in lower case\n" +
+        "string.reverse() // Returns a new string with the characters in reverse order\n" +
+        "```\n" +
+        "Below write a function that returns the first character of the passed in string.",
+
+
+        testCode: `.needs <std>
+import * from "io" under io;
+import string from "String";
+import * from "./src/TestModule" under mod;
+import {case, report, require} from "ATest.af" under test;
+
+import TestSuite from "ATest.af";
+bool firstChar(adr _arg) : test.case {
+    string s = "Hello";
+    string s2 = "World";
+    string s3 = "Aflat";
+    return (
+        test.require(mod.firstChar(s) == 'H', ${"`'Hello' Expected 'H' but got '{mod.firstChar(s)}'`"}) &
+        test.require(mod.firstChar(s2) == 'W', ${"`'World' Expected 'W' but got '{mod.firstChar(s2)}'`"}) &
+        test.require(mod.firstChar(s3) == 'A', ${"`'Aflat' Expected 'A' but got '{mod.firstChar(s3)}'`"})
+        );
+};
+
+int main() {
+    TestSuite suite = new TestSuite("Pointer Test Suite");
+    suite.addCase(firstChar, "Test Returns the first character of the passed in string");
+    suite.run();
+    test.report();
+    return 0;
+};`,
+        defaultCode: `.needs <std>
+import * from "strings" under str;
+import string from "String";
+
+// Write some code that returns the first character of the passed in string
+export char firstChar(string str) {
+    return 'c';
+};
+`,
+        moduleName: "TestModule",
+    },
 ]
 
 export default lessons;
