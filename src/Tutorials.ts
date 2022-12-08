@@ -181,6 +181,14 @@ export int callNTimes(int n, adr foo) {
         title: "If statements",
         description: "Aflat supports if statements with the syntax `if condition { body } else { body }`" +
             " Notice that there are no parentheses around the condition.\n"
+            + " Here is an example of an if statement that checks if the passed in integer is greater than 5 and returns true if it is and false if it is not.\n\n"
+            + " ```javascript\n"
+            + " if n > 5 {\n"
+            + "     return true;\n"
+            + " } else {\n"
+            + "     return false;\n"
+            + " };\n"
+            + " ```\n\n"
             + " Below write a function that returns the larger of the two passed in integers."
             + " Then write a function that returns the fizzbuzz value of the passed in integer use 'CamelCase' and return and empty string if it would have been a plain number.",
         testCode: `.needs <std>
@@ -234,6 +242,47 @@ export adr fizzBuzz(int n) {
 
     },
     {
+        title: "if Expression",
+        description: "Aflat supports if expressions with the syntax `if condition expr else expr`" +
+            " the if expression returns the value of the expression that is evaluated.\n"
+            + " Here is an example of an if expression that sets val to `n` if `n` is greater than 5 and sets it to 5 if it is not.\n\n"
+            + " ```javascript\n"
+            + " let val = if n > 5 n else 5; // let is a keyword that declares a variable using type inference to determine the type. `let` is preferred when possible.\n"
+            + " ```\n\n"
+            + " Below write a function that returns the larger of the two passed in integers. use an if expression.",
+        testCode: `.needs <std>
+import * from "io" under io;
+import string from "String";
+import * from "./src/TestModule" under mod;
+import {case, report, require} from "ATest.af" under test;
+
+import TestSuite from "ATest.af";
+bool returnLarger(adr _arg) : test.case {
+    return (
+        test.require(mod.returnLarger(5, 10) == 10, ${"`'5, 10' Expected 10 but got {mod.returnLarger(5, 10)}`"}) &
+        test.require(mod.returnLarger(10, 5) == 10, ${"`'10, 5' Expected 10 but got {mod.returnLarger(10, 5)}`"}) &
+        test.require(mod.returnLarger(5, 5) == 5, ${"`'5, 5' Expected 5 but got {mod.returnLarger(5, 5)}`"})
+    );
+};
+
+int main() {
+    TestSuite suite = new TestSuite("Pointer Test Suite");
+    suite.addCase(returnLarger, "Test Returns the larger of the two passed in integers");
+    suite.run();
+    test.report();
+    return 0;
+};`,
+        defaultCode: `.needs <std>
+
+// Write some code that returns the larger of the two passed in integers using an if expression
+export int returnLarger(int a, int b) {
+    return 0;
+};
+`,
+        moduleName: "TestModule",
+
+    },
+    {
         title: "Aflat Standard string Object",
         description: "Aflat has a standard string object that can be imported with `import string from \"String\"`.\n" +
         "The string object is the preferred way to work with strings in Aflat rather than using adr pointers.\n" +
@@ -276,7 +325,6 @@ int main() {
     return 0;
 };`,
         defaultCode: `.needs <std>
-import * from "strings" under str;
 import string from "String";
 
 // Write some code that returns the first character of the passed in string

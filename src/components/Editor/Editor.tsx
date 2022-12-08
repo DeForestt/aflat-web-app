@@ -1,7 +1,7 @@
 import React from "react";
 import {useCookies} from "react-cookie";
 import runBox from "./utils";
-import { AflatProject, Module, uploadModule } from "./utils";
+import { AflatProject } from "./utils";
 import CodeEditor from '@uiw/react-textarea-code-editor';
 import ConsoleEmulator from "../ConsoleEmulator/ConsoleEmulator";
 import UploadModal from "./UploadModal";
@@ -15,7 +15,7 @@ interface EditorProps {
 }
 
 const Editor : React.FC<EditorProps> = (props : EditorProps) => {
-    const [cookies, setCookie] = useCookies(['code']);
+    const [cookies, setCookie] = useCookies(['code']); // eslint-disable-line @typescript-eslint/no-unused-vars 
     const [code, setCode] = React.useState(props.defaultCode)
     const [output, setOutput] = React.useState("Output will be here");
     const [mode, setMode] = React.useState("code");

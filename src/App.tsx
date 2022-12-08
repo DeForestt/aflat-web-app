@@ -6,9 +6,9 @@ import TutorialBox from './components/Tutorial/TutorialBox/TutorialBox';
 import Tutorials from './Tutorials';
 
 function App() {
-  const [cookies, setCookie] = useCookies(['code']);
+  const [cookies, setCookies] = useCookies(['code']); // eslint-disable-line @typescript-eslint/no-unused-vars
   const [tutorial, setTutorial] = React.useState(0);
-  const [searchParams, setSearchParams] = React.useState(new URLSearchParams(window.location.search));
+  const [searchParams, setSearchParams] = React.useState(new URLSearchParams(window.location.search)); // eslint-disable-line @typescript-eslint/no-unused-vars
   const code = searchParams.get('code')? searchParams.get('code') : (cookies.code? cookies.code : `.needs <std> \nimport * from "io" under io; \n\nint main(){\n\tio.print("Hello World");\n};`);
 
   return (
