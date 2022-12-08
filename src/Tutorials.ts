@@ -122,7 +122,7 @@ export adr returnHelloWorld() {
             " Notice that there are no parentheses around the declaration, condition, and increment.  The declaration is executed before the loop starts."
             + " The condition is checked before each iteration of the loop.  The increment is executed after each iteration of the loop."
             + " Below is an example of a for loop that prints the numbers 0 to 9:\n\n"
-            + "```javascript\nfor int i = 0; i < 10; i = i + 1 {\n io.printInt(i); \n}\n```\n\n"
+            + "```javascript\nfor int i = 0; i < 10; i = i + 1 {\n\tio.printInt(i);\n};\n```\n\n"
             + " Below you can write a program that that calls the passed in function 10 times.\n\n"
             + " Then write a program that calls the passed in function the number of times specified by the passed in integer.",
         testCode: `.needs <std>
