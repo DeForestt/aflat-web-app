@@ -101,7 +101,7 @@ import {str_comp} from "strings" under str;
 bool returnHelloWorld(adr _arg) : test.case {
     adr x = mod.returnHelloWorld();
     if x == NULL return false; 
-    return str.str_comp(x, "Hello World") == 1;
+    return test.require(str.str_comp(x, "Hello World") == 1, ${"`Expected a pointer to the string 'Hello World' but got {x}`"});
 };
 
 int main() {
