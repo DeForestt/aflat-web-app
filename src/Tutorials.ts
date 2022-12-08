@@ -3,10 +3,11 @@ import { ModuleKind } from "typescript";
 export default [
     {
         title: "Ints in Aflat",
-        description: "Aflat alows you to work with variables like any other programing language.  The int type represents a 32-bit integer. below you can write a program that returns and integer value of 7. and then a function that returns the sum of two integers.",
+        description: "Aflat allows you to work with variables like any other programing language.  The int type represents a 32-bit integer. below you can write a program that returns and integer value of 7. and then a function that returns the sum of two integers.",
         testCode: `.needs <std>
 import * from "io" under io;
 import * from "./src/TestModule" under mod;
+import string from "String";
 
 import {case, report, require} from "ATest.af" under test;
 import TestSuite from "ATest.af";
@@ -37,7 +38,7 @@ int main() {
         defaultCode: `.needs <std>
 // Write some code that returns an integer value of 7
 export int return7() { // The export keyword makes the function available to other modules it is needed here so that the test code can access the function.
-    return ; // the return keyword returns a value from a function and ends the function.
+    return 0; // the return keyword returns a value from a function and ends the function.
 };
 
 // Write a function that takes two integers and returns their sum
@@ -49,12 +50,13 @@ export int sum(int a, int b) {
     {
         title: "Pointers in Aflat",
         description: "Similar to C, Aflat allows you to work with pointers.  One big difference in aflat is that pointers are not typed.  They all have the same type of `adr`. This means that you can use a pointer to any type of data."
-            + " variables can be refrenced by using the `?` oporator (where is <variable name>) if you have an int called `a` the int can be referensed like this."
-            + "\n\n `adr b = ?a;`\n\n To get the value that a pointer points to you can use the `as` oporator and the type that you expect `int c = a as int;`\n\n A value can be stored in a pointer by using the funnel oporator `=:` `b =: 5;`"
+            + " variables can be referenced by using the `?` operator (where is <variable name>) if you have an int called `a` the int can be referenced like this."
+            + "\n\n `adr b = ?a;`\n\n To get the value that a pointer points to you can use the `as` operator and the type that you expect `int c = a as int;`\n\n A value can be stored in a pointer by using the funnel operator `=:` `b =: 5;`"
             + "\n\n Below write a program that reads an integer from a pointer and then stores the number 5 in the pointer return the value of the original integer.",
         testCode: `.needs <std>
 import * from "io" under io;
 import * from "./src/TestModule" under mod;
+import string from "String";
 
 import {case, report, require} from "ATest.af" under test;
 import TestSuite from "ATest.af";
@@ -93,6 +95,7 @@ import * from "io" under io;
 import * from "./src/TestModule" under mod;
 import {case, report, require} from "ATest.af" under test;
 import TestSuite from "ATest.af";
+import string from "String";
 import {str_comp} from "strings" under str;
 
 bool returnHelloWorld(adr _arg) : test.case {
@@ -117,8 +120,8 @@ export adr returnHelloWorld() {
     },
     {
         title: "For loops",
-        description: "Aflat supports for loops with the syntax `for decleration; condition; increment { body }`" +
-            " Notice that there are no parentheses around the decleration, condition, and increment.  The decleration is executed before the loop starts."
+        description: "Aflat supports for loops with the syntax `for declaration; condition; increment { body }`" +
+            " Notice that there are no parentheses around the declaration, condition, and increment.  The declaration is executed before the loop starts."
             + " The condition is checked before each iteration of the loop.  The increment is executed after each iteration of the loop."
             + " Below you can write a program that that calls the passed in function 10 times.\n\n"
             + " Then write a program that calls the passed in function the number of times specified by the passed in integer.",
@@ -127,6 +130,7 @@ import * from "io" under io;
 import * from "./src/TestModule" under mod;
 import {case, report, require} from "ATest.af" under test;
 import TestSuite from "ATest.af";
+import string from "String";
 
 int i = 0;
 int increment() {
@@ -184,6 +188,7 @@ export int callNTimes(int n, adr foo) {
         testCode: `.needs <std>
 import * from "io" under io;
 import * from "strings" under str;
+import string from "String";
 import * from "./src/TestModule" under mod;
 import {case, report, require} from "ATest.af" under test;
 
