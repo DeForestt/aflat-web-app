@@ -249,7 +249,8 @@ export adr fizzBuzz(int n) {
             " the if expression returns the value of the expression that is evaluated.\n"
             + " Here is an example of an if expression that sets val to `n` if `n` is greater than 5 and sets it to 5 if it is not.\n\n"
             + " ```javascript\n"
-            + " let val = if n > 5 n else 5; // let is a keyword that declares a variable using type inference to determine the type. `let` is preferred when possible.\n"
+            + " // let is a keyword that declares a variable using type inference to determine the type. `let` is preferred when possible.\n"
+            + " let val = if n > 5 n else 5;\n"
             + " ```\n\n"
             + " Below write a function that returns the larger of the two passed in integers. use an if expression.",
         testCode: `.needs <std>
