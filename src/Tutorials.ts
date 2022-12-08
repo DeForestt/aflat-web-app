@@ -49,7 +49,7 @@ export int sum(int a, int b) {
         title: "Pointers in Aflat",
         description: "Similar to C, Aflat allows you to work with pointers.  One big difference in aflat is that pointers are not typed.  They all have the same type of `adr`. This means that you can use a pointer to any type of data."
             + " variables can be referenced by using the `?` operator (where is <variable name>) if you have an int called `a` the int can be referenced like this."
-            + "\n\n ```javascript adr b = ?a;```\n\n To get the value that a pointer points to you can use the `as` operator and the type that you expect `int c = a as int;`\n\n A value can be stored in a pointer by using the funnel operator `=:` `b =: 5;`"
+            + "\n\n ```javascript\nadr b = ?a;\n```\n\n To get the value that a pointer points to you can use the `as` operator and the type that you expect `int c = a as int;`\n\n A value can be stored in a pointer by using the funnel operator `=:` `b =: 5;`"
             + "\n\n Below write a program that reads an integer from a pointer and then stores the number 5 in the pointer return the value of the original integer.",
         testCode: `.needs <std>
 import * from "io" under io;
@@ -86,7 +86,7 @@ export int pointerFun(adr a) {
     {
         title: "Pointers to string literals",
         description: "Aflat allows you to create pointers to string literals just like a `char *` in C."
-            + " Simply assign the pointer to a string literal like this: \n\n```javascript\nadr a = \"Hello World\";````\n\n\n"
+            + " Simply assign the pointer to a string literal like this: \n\n```javascript\nadr a = \"Hello World\";\n```\n\n"
             + " Below you can write a program that returns a pointer to the string \"Hello World\".",
         testCode: `.needs <std>
 import * from "io" under io;
@@ -122,7 +122,7 @@ export adr returnHelloWorld() {
             " Notice that there are no parentheses around the declaration, condition, and increment.  The declaration is executed before the loop starts."
             + " The condition is checked before each iteration of the loop.  The increment is executed after each iteration of the loop."
             + " Below is an example of a for loop that prints the numbers 0 to 9:\n\n"
-            + "```javascript\nfor int i = 0; i < 10; i = i + 1 {\n io.printInt(i); \n}```\n\n"
+            + "```javascript\nfor int i = 0; i < 10; i = i + 1 {\n io.printInt(i); \n}\n```\n\n"
             + " Below you can write a program that that calls the passed in function 10 times.\n\n"
             + " Then write a program that calls the passed in function the number of times specified by the passed in integer.",
         testCode: `.needs <std>
