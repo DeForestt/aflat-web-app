@@ -14,15 +14,15 @@ import TestSuite from "ATest.af";
 
 bool return7(adr _arg) : test.case {
     int x = mod.return7();
-    return x == 7;
+    return test.require(x == 7, ${"`return7() = 7 but got {x}`"});
 };
 
 bool sum(adr _arg) : test.case {
     return (
-        test.require(mod.sum(1, 2) == 3, "1 + 2 = 3") &
-        test.require(mod.sum(2, 2) == 4, "2 + 2 = 4") &
-        test.require(mod.sum(3, 2) == 5, "3 + 2 = 5") &
-        test.require(mod.sum(4, 2) == 6, "4 + 2 = 6")
+        test.require(mod.sum(1, 2) == 3, ${"`1 + 2 = 3 but got {mod.sum(1, 2)}`"}) &
+        test.require(mod.sum(2, 2) == 4, ${"`2 + 2 = 4 but got {mod.sum(2, 2)}`"}) &
+        test.require(mod.sum(3, 2) == 5, ${"`3 + 2 = 5 but got {mod.sum(3, 2)}`"}) &
+        test.require(mod.sum(4, 2) == 6, ${"`4 + 2 = 6 but got {mod.sum(4, 2)}`"})
     );
 };
 
