@@ -193,18 +193,19 @@ import {case, report, require} from "ATest.af" under test;
 import TestSuite from "ATest.af";
 bool returnLarger(adr _arg) : test.case {
     return (
-        test.require(mod.returnLarger(5, 10) == 10, "5, 10") &
-        test.require(mod.returnLarger(10, 5) == 10, "10, 5") &
-        test.require(mod.returnLarger(5, 5) == 5, "5, 5")
+        test.require(mod.returnLarger(5, 10) == 10, ${"`'5, 10' Expected 10 but got {mod.returnLarger(5, 10)}`"}) &
+        test.require(mod.returnLarger(10, 5) == 10, ${"`'10, 5' Expected 10 but got {mod.returnLarger(10, 5)}`"}) &
+        test.require(mod.returnLarger(5, 5) == 5, ${"`'5, 5' Expected 5 but got {mod.returnLarger(5, 5)}`"})
     );
 };
 
 bool fizzBuzz(adr _arg) : test.case {
+    if mod.fizzBuzz(3) == NULL return false; // Check if the pointer is NULL before trying to use it
     return (
-        test.require(str.str_comp(mod.fizzBuzz(3), "Fizz") == 1, "3") &
-        test.require(str.str_comp(mod.fizzBuzz(5), "Buzz") == 1, "5") &
-        test.require(str.str_comp(mod.fizzBuzz(15), "FizzBuzz") == 1, "15") &
-        test.require(str.str_comp(mod.fizzBuzz(2), "") == 1, "2")
+        test.require(str.str_comp(mod.fizzBuzz(3), "Fizz") == 1, ${"`'3' Expected 'Fizz' but got {mod.fizzBuzz(3)}`"}) &
+        test.require(str.str_comp(mod.fizzBuzz(5), "Buzz") == 1, ${"`'5' Expected 'Buzz' but got {mod.fizzBuzz(5)}`"}) &
+        test.require(str.str_comp(mod.fizzBuzz(15), "FizzBuzz") == 1, ${"`'15' Expected 'FizzBuzz' but got {mod.fizzBuzz(15)}`"}) &
+        test.require(str.str_comp(mod.fizzBuzz(2), "") == 1, ${"`'2' Expected '' but got {mod.fizzBuzz(2)}`"})
     );
 };
 
