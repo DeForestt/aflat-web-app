@@ -208,7 +208,8 @@ bool call10Times(adr _arg) : test.case {
     int t2 = i;
     i = 0;
     return test.require(t == 10, ${"`Expected the function to be called 10 times but got {t}`"} &
-        test.require(t2 == 5, ${"`Expected the function to be called 5 times but got {t2} (Did not break)`"}) );
+        test.require(t2 == 5, ${"`Expected the function to be called 5 times but got {t2} (Did not break)`"})
+    );
 };
 
 int main() {
