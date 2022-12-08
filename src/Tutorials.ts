@@ -66,8 +66,8 @@ bool returnPointer(adr _arg) : test.case {
     adr x = ?i;
     int y = mod.pointerFun(x);
     return (
-        test.require(y == 7, "The original value was returned") &
-        test.require(i == 5, "The value of the pointer was changed to 5")
+        test.require(y == 7, "The original value was returned.") &
+        test.require(i == 5, ${"`The value of the pointer was changed to 5 but got {i}`"})
     );
 };
 
