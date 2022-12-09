@@ -180,53 +180,6 @@ export int callNTimes(int n, adr foo) {
 
     },
     {
-        title: "Break and continue",
-        description: "Aflat supports break and continue statements.  Break statements can be used to exit a loop early."
-            + " Continue statements can be used to skip the rest of the current iteration of a loop and go to the next iteration."
-            + " A number can be passed to the break or continue statement to specify how many loops to break or continue out of.\n"
-            + " Below is an example of a for loop with a `break` statement that breaks out of the loop when the counter is 5:\n\n"
-            + "```javascript\nfor int i = 0; i < 10; i = i + 1 {\n\tio.printInt(i);\n\tif i == 5 {\n\t\tbreak;\n\t};\n};\n```\n\n"
-            + " Below you can write a program that that calls the passed in function 10 times and breaks out of the loop when the counter is 5 if the passed in var is true.\n\n",
-
-        testCode: `.needs <std>
-import * from "io" under io;
-import * from "./src/TestModule" under mod;
-import {case, report, require} from "ATest.af" under test;
-import TestSuite from "ATest.af";
-import string from "String";
-
-int i = 0;
-int increment() {
-    i = i + 1;
-};
-
-bool call10Times(adr _arg) : test.case {
-    mod.call10Times(increment, false);
-    int t = i;
-    i = 0;
-    mod.call10Times(increment, true);
-    int t2 = i;
-    i = 0;
-    return test.require(t == 10, ${"`Expected the function to be called 10 times but got {t}`"} &
-        test.require(t2 == 5, ${"`Expected the function to be called 5 times but got {t2} (Did not break)`"})
-    );
-};
-
-int main() {
-    TestSuite suite = new TestSuite("Break Test Suite");
-    suite.addCase(call10Times, "Test Calls the passed in function 10 times and breaks out of the loop when the counter is 5");
-    suite.run();
-    test.report();
-    return 0;
-};`,
-        defaultCode: `.needs <std>
-// Write some code that calls the passed in function 10 times and breaks out of the loop when the counter is 5
-export int call10Times(adr foo) {
-    return 0;
-};`,
-        moduleName: "TestModule",
-    },
-    {
         title: "If statements",
         description: "Aflat supports if statements with the syntax `if condition { body } else { body }`" +
             " Notice that there are no parentheses around the condition.\n"
